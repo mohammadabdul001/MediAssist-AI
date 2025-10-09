@@ -1,0 +1,10 @@
+services:
+  - type: static_site
+    name: mediassist-frontend
+    env: static
+    plan: free
+    buildCommand: npm install && npm run build
+    publishPath: build
+    envVars:
+      - key: REACT_APP_API_URL
+        fromDatabase: false

@@ -1,0 +1,20 @@
+services:
+  - type: web_service
+    name: mediassist-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: python backend/app.py
+    envVars:
+      - key: JWT_SECRET_KEY
+        fromDatabase: false
+
+  - type: static_site
+    name: mediassist-frontend
+    env: static
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build
+    publishPath: frontend/build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://mediassist-backend.onrender.com

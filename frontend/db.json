@@ -1,0 +1,102 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin123@gmail.com",
+      "password": "Pr@1245",
+      "role": "admin",
+      "name": "Admin",
+      "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "email": "patient@example.com",
+      "password": "patient123",
+      "role": "patient",
+      "name": "Rajesh",
+      "phone": "+1234567890",
+      "dateOfBirth": "1990-05-15",
+      "bloodGroup": "O+",
+      "createdAt": "2024-01-02T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "email": "doctor@example.com",
+      "password": "doctor123",
+      "role": "doctor",
+      "name": "Dr. Sarah Joe",
+      "specialization": "Cardiology",
+      "license": "MD12345",
+      "phone": "+1234567891",
+      "createdAt": "2024-01-03T00:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "email": "lab@example.com",
+      "password": "lab123",
+      "role": "lab_person",
+      "name": "Ramu",
+      "labName": "Central Lab",
+      "phone": "+1234567892",
+      "createdAt": "2024-01-04T00:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "email": "pharmacy@example.com",
+      "password": "pharmacy123",
+      "role": "pharmacy",
+      "name": "Ram",
+      "pharmacyName": "MediCare Pharmacy",
+      "phone": "+1234567893",
+      "createdAt": "2024-01-05T00:00:00.000Z"
+    }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "userId": 2,
+      "medicalHistory": [],
+      "appointments": [],
+      "medications": [],
+      "labTests": []
+    }
+  ],
+  "doctors": [
+    {
+      "id": 1,
+      "userId": 3,
+      "patients": [],
+      "appointments": [],
+      "prescriptions": []
+    }
+  ],
+  "labTests": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "doctorId": 1,
+      "testName": "Blood Test",
+      "status": "pending",
+      "requestedDate": "2024-01-10T00:00:00.000Z",
+      "results": null,
+      "images": []
+    }
+  ],
+  "prescriptions": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "doctorId": 1,
+      "medications": [
+        {
+          "name": "Aspirin",
+          "dosage": "100mg",
+          "frequency": "Once daily",
+          "duration": "7 days"
+        }
+      ],
+      "prescribedDate": "2024-01-10T00:00:00.000Z",
+      "status": "pending"
+    }
+  ]
+}

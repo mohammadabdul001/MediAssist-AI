@@ -1,0 +1,48 @@
+from flask import Flask
+from flask_cors import CORS
+from config import Config
+from models.db import db
+from datetime import datetime, timedelta
+
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(Config)
+    CORS(app)
+
+    # Register blueprints
+    from routes.symptom_analysis import bp as symptom_analysis_bp
+    from routes.health_records import bp as health_records_bp
+    from routes.appointments import bp as appointments_bp
+    from routes.medications import bp as medications_bp
+    from routes.lab_tests import bp as lab_tests_bp
+    from routes.health_analytics import bp as health_analytics_bp
+    from routes.chatbot import bp as chatbot_bp
+    from routes.sos import bp as sos_bp
+    from routes.telemedicine import bp as telemedicine_bp
+    from routes.recommendations import bp as recommendations_bp
+    from routes.language import bp as language_bp  # NEW
+    app.register_blueprint(symptom_analysis_bp)
+    app.register_blueprint(health_records_bp)
+    app.register_blueprint(appointments_bp)
+    app.register_blueprint(medications_bp)
+    app.register_blueprint(lab_tests_bp)
+    app.register_blueprint(health_analytics_bp)
+    app.register_blueprint(chatbot_bp)
+    app.register_blueprint(sos_bp)
+    app.register_blueprint(telemedicine_bp)
+    app.register_blueprint(recommendations_bp)
+    app.register_blueprint(language_bp)  # NEW
+
+    @app.route('/health')
+    def health_check():
+        return jsonify({
+            "status": "OK",
+            "message": "MediAssist AI Backend is running",
+            "timestamp": datetime.utcnow().isoformat()
+        }), 200
+
+    return app
+
+if __name__ == '__main__':
+    app = create_app()
+    app.run(host='0.0.0.0', port=5000, debug=True)
